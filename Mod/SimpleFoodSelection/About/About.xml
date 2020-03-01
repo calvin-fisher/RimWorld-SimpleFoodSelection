@@ -14,6 +14,9 @@
       <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
     </li>
   </modDependencies>
+  <incompatibleWith>
+    <li>Uuugggg.RoomFood</li>
+  </incompatibleWith>
   <description>
     Replaces the vanilla food searching algorithm with a better one.
   </description>
