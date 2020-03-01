@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.438
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleFoodSelection", "SimpleFoodSelection.csproj", "{27973F42-7DD4-4138-A45F-F3254629CAC3}"
 EndProject
@@ -14,8 +14,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".git", ".git", "{ECE47E16-4
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mod", "Mod", "{CCAC530E-D55D-427D-8B54-D8A29D04E06B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "About", "About", "{2735BBBB-9F71-44F7-A5A5-D09B3E4054EA}"
 	ProjectSection(SolutionItems) = preProject
 		..\Mod\SimpleFoodSelection\About\About.xml = ..\Mod\SimpleFoodSelection\About\About.xml
+		..\Mod\SimpleFoodSelection\About\Preview.png = ..\Mod\SimpleFoodSelection\About\Preview.png
+		..\Mod\SimpleFoodSelection\About\PublishedFileId.txt = ..\Mod\SimpleFoodSelection\About\PublishedFileId.txt
 	EndProjectSection
 EndProject
 Global
@@ -31,6 +35,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2735BBBB-9F71-44F7-A5A5-D09B3E4054EA} = {CCAC530E-D55D-427D-8B54-D8A29D04E06B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7183E9F-F030-4C1E-8556-F9DF093117F1}
