@@ -107,14 +107,18 @@ namespace SimpleFoodSelection.Searching
                     if (def == ThingDefOf.Hay)
                         return FoodCategory.Hay;
 
-                    if (def.plant != null && !def.plant.sowTags.NullOrEmpty())
-                        return FoodCategory.Plant;
-
                     if (def.thingCategories?.Contains(ThingCategoryDefOf.PlantMatter) ?? false)
                         return FoodCategory.PlantMatter;
 
                     if (foodPref == FoodPreferability.DesperateOnly)
                         return FoodCategory.Ignore;
+
+                    if (def.plant != null)
+                    {
+                        // Flowers can be sown; wild plants can be harvested; both for crops
+                        if (!def.plant.sowTags.NullOrEmpty() || def.plant.harvestedThingDef != null)
+                            return FoodCategory.Plant;
+                    }
 
                     return FoodCategory.Grass;
                 }
@@ -147,10 +151,6 @@ namespace SimpleFoodSelection.Searching
                 if ((def.ingestible.tasteThought == null || def.ingestible.tasteThought.stages.All((ThoughtStage arg) => arg.baseMoodEffect >= 0)))
                     return FoodCategory.RawTasty;
             }
-
-            // non ingestible corpse ?
-            if (def.IsCorpse)
-                return FoodCategory.Ignore;
 
             return FoodCategory.Null;
         }
