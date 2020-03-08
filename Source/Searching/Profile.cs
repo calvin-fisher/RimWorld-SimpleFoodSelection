@@ -101,7 +101,7 @@ namespace SimpleFoodSelection.Searching
             name: "Pet",
             good: new[]
             {
-                new[] { FoodCategory.Grass, FoodCategory.Hunt },
+                new[] { FoodCategory.Tree, FoodCategory.Grass },
                 new[] { FoodCategory.Hay },
                 new[] { FoodCategory.Kibble },
                 new[] { FoodCategory.MealAwful },
@@ -113,13 +113,16 @@ namespace SimpleFoodSelection.Searching
             },
             bad: new[]
             {
+                new[] { FoodCategory.Hunt },
                 // TODO: Prevent/accommodate meals being taken for training
                 new[] { FoodCategory.MealSimple },
-                new[] { FoodCategory.Plant, FoodCategory.PlantMatter, FoodCategory.Tree },
+                new[] { FoodCategory.Plant, FoodCategory.PlantMatter },
             },
             desperate: new[]
             {
                 new[] { FoodCategory.FertEggs },
+                new[] { FoodCategory.MealFine },
+                new[] { FoodCategory.MealLavish },
             });
 
         public static readonly Profile Ascetic = new Profile(
