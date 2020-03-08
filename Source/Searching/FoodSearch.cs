@@ -43,11 +43,9 @@ namespace SimpleFoodSelection.Searching
             try
             {
                 var profile = Profile.For(parameters.Eater);
-                if (profile == null)
-                {
-                    traceOutput?.AppendLine($"No profile found for {parameters.Eater}, falling back to vanilla");
-                    return new FoodSearchResult { Success = false };
-                }
+                if (profile == null) // Use vanilla algorithm if no profile found
+                    return new FoodSearchResult { ShouldIntercept = false };
+
                 traceOutput?.AppendLine($"Using profile {profile.Name} for {parameters.Eater}");
 
                 foreach (var foodTier in profile)
@@ -55,7 +53,7 @@ namespace SimpleFoodSelection.Searching
                     if (!foodTier.ShouldUse(parameters.Eater))
                     {
                         traceOutput?.AppendLine($"Not using food tier {foodTier.Name}, assuming others are worse and aborting here");
-                        return new FoodSearchResult { Success = true };
+                        return new FoodSearchResult { ShouldIntercept = true };
                     }
 
                     traceOutput?.AppendLine($"Searching food tier {foodTier.Name}");
@@ -81,12 +79,12 @@ namespace SimpleFoodSelection.Searching
                 }
 
                 // Don't fall back to vanilla in case certain food types were excluded intentionally
-                return new FoodSearchResult { Success = true };
+                return new FoodSearchResult { ShouldIntercept = true };
             }
             catch (Exception ex)
             {
                 Mod.LogError(ex.ToString() + Environment.NewLine + ex.StackTrace);
-                return new FoodSearchResult { Success = false };
+                return new FoodSearchResult { ShouldIntercept = false };
             }
         }
 

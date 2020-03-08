@@ -53,10 +53,11 @@ namespace SimpleFoodSelection.Patches
                 var result = new FoodSearch(parameters).Find();
 #endif
                 
-                if (result.Success)
+                if (result.ShouldIntercept)
                 {
 #if DEBUG
                     traceOutput.AppendLine($"Found food {result.Thing?.Label ?? "(none)"} with def {result.Def?.label ?? "(none)"} for {eater}");
+                    Mod.LogMessage(traceOutput.ToString());
 #endif
 
                     __result = result.Thing;
@@ -67,13 +68,10 @@ namespace SimpleFoodSelection.Patches
             catch (Exception ex)
             {
                 Mod.LogError(ex.ToString() + Environment.NewLine + ex.StackTrace);
-            }
 #if DEBUG
-            finally
-            {
                 Mod.LogMessage(traceOutput.ToString());
-            }
 #endif
+            }
 
             // If failure, fall back to vanilla
             return true;

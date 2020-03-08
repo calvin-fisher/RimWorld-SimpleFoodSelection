@@ -8,9 +8,14 @@ namespace SimpleFoodSelection.Searching
 {
     public class FoodSearchResult
     {
+        /// <summary>Whether the vanilla search result should be replaced with this one</summary>
+        public bool ShouldIntercept;
+        
+        /// <summary>A reference to the the food search result</summary>
         public Thing Thing;
+        
+        /// <summary>The type definition of the food search result</summary>
         public ThingDef Def;
-        public bool Success;
 
         public FoodSearchResult() { }
 
@@ -18,7 +23,7 @@ namespace SimpleFoodSelection.Searching
         {
             Thing = foodSearchItem.Thing;
             Def = foodSearchItem.Def;
-            Success = true;
+            ShouldIntercept = true;
         }
     }
 }
